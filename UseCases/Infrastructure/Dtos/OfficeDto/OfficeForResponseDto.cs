@@ -1,6 +1,6 @@
-﻿namespace Core.Entities
+﻿namespace UseCases.Infrastructure.Dtos.OfficeDto
 {
-    public class Office
+    public class OfficeForResponseDto
     {
         public Guid Id { get; set; }
         public string City { get; set; }

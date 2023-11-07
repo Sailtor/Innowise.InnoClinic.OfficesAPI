@@ -1,8 +1,7 @@
-﻿namespace Core.Entities
+﻿namespace UseCases.Infrastructure.Dtos.OfficeDto
 {
-    public class Office
+    public class OfficeForCreationDto
     {
-        public Guid Id { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
