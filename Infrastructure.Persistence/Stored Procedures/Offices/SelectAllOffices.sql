@@ -1,0 +1,5 @@
+ALTER PROCEDURE [dbo].[SelectAllOffices]
+AS
+	SET NOCOUNT ON;
+SELECT *
+FROM Offices
