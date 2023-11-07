@@ -1,5 +1,7 @@
 ﻿using Core.Exceptions;
 using Core.Repositories;
+using Infrastructure.Shared;
+using MassTransit;
 using UseCases.Interfaces;
 using UseCases.Offices.Commands;
 
@@ -8,10 +10,11 @@ namespace UseCases.Offices.Handlers
     public class UpdateOfficeStatusHandler : ICommandHandler<UpdateOfficeStatusCommand>
     {
         private readonly IRepositoryManager _repositoryManager;
-
-        public UpdateOfficeStatusHandler(IRepositoryManager repositoryManager)
+        private readonly IPublishEndpoint _publishEndpoint;
+        public UpdateOfficeStatusHandler(IRepositoryManager repositoryManager, IPublishEndpoint publishEndpoint)
         {
             _repositoryManager = repositoryManager;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task Handle(UpdateOfficeStatusCommand request, CancellationToken cancellationToken)
@@ -24,9 +27,11 @@ namespace UseCases.Offices.Handlers
             office.IsActive = request.isActive;
             _repositoryManager.OfficeRepository.Update(office);
 
-            /*
-             TODO: send rabbitmq message to update doctor and receptionst statuses
-             */
+            await _publishEndpoint.Publish<OfficeStatusChanged>(new
+            {
+                Id = office.Id,
+                IsActive = request.isActive
+            }, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ using FluentMigrator.Runner;
 using FluentValidation;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Migrations;
+using MassTransit;
 using MediatR;
 using OfficesAPI.Middleware;
 using UseCases.PipelineBehaviors;
@@ -69,6 +70,14 @@ namespace OfficesAPI.Extensions
         public static void CofigureExceptionHandlerMiddleware(this IServiceCollection services)
         {
             services.AddTransient<ExceptionHandlingMiddleware>();
+        }
+
+        public static void CofigureMassTransit(this IServiceCollection services)
+        {
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq();
+            });
         }
 
         /* --- CUSTOM MIDDLEWARE --- */

@@ -21,6 +21,7 @@ try
     builder.Services.ConfigureCQRSServices();
     builder.Services.CofigureAuthorization();
     builder.Services.CofigureExceptionHandlerMiddleware();
+    builder.Services.CofigureMassTransit();
 
     var app = builder.Build();
 

@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Persistence"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{50DBFDD1-5770-4AD4-A46C-A572D4AD3CE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.MessageBus", "Infrastructure.MessageBus\Infrastructure.MessageBus.csproj", "{C8E78603-0D24-43A6-8F46-D788CD1A8EC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Shared", "Infrastructure.MessageBus\Infrastructure.Shared.csproj", "{C8E78603-0D24-43A6-8F46-D788CD1A8EC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
