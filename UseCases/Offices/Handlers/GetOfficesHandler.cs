@@ -4,7 +4,7 @@ using UseCases.Infrastructure.Dtos.OfficeDto;
 using UseCases.Interfaces;
 using UseCases.Offices.Queries;
 
-namespace UseCases.Handlers.Offices
+namespace UseCases.Offices.Handlers
 {
     public class GetOfficesHandler : IQueryHandler<GetOfficesQuery, IEnumerable<OfficeForResponseDto>>
     {

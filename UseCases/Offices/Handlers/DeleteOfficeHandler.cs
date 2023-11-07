@@ -3,7 +3,7 @@ using Core.Repositories;
 using UseCases.Interfaces;
 using UseCases.Offices.Commands;
 
-namespace UseCases.Handlers.Offices
+namespace UseCases.Offices.Handlers
 {
     public class DeleteOfficeHandler : ICommandHandler<DeleteOfficeCommand>
     {

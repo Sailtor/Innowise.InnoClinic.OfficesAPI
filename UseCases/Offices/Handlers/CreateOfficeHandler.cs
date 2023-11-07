@@ -5,7 +5,7 @@ using UseCases.Infrastructure.Dtos.OfficeDto;
 using UseCases.Interfaces;
 using UseCases.Offices.Commands;
 
-namespace UseCases.Handlers.Offices
+namespace UseCases.Offices.Handlers
 {
     public class CreateOfficeHandler : ICommandHandler<CreateOfficeCommand, OfficeForResponseDto>
     {

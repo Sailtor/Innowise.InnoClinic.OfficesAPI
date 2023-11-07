@@ -1,25 +1,48 @@
-var builder = WebApplication.CreateBuilder(args);
+using OfficesAPI.Extensions;
+using Serilog;
 
-// Add services to the container.
+LoggingExtensions.CongigureLogger();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Information("Starting web host");
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Host.UseSerilog((ctx, lc) => lc
+        .WriteTo.Console());
+
+    builder.Services.ConfigureControllers();
+    builder.Services.ConfigureSwagger();
+    builder.Services.ConfigureDapper(builder.Configuration);
+    builder.Services.ConfigureEntityServices();
+    builder.Services.ConfigureFluentValidation();
+    builder.Services.ConfigureAutomapper();
+    builder.Services.ConfigureCQRSServices();
+    builder.Services.CofigureAuthorization();
+    builder.Services.CofigureExceptionHandlerMiddleware();
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseExceptionHandlerMiddleware();
+    app.UseSerilogRequestLogging();
+    app.MigrateDatabase();
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.MapControllers().AllowAnonymous(); //NOTE: turned auth off during development
+    app.Run();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

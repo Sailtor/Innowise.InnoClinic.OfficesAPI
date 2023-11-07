@@ -6,7 +6,7 @@ using UseCases.Infrastructure.Dtos.OfficeDto;
 using UseCases.Offices.Commands;
 using UseCases.Offices.Queries;
 
-namespace Infrastructure.Presentation.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/offices")]

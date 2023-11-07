@@ -3,7 +3,7 @@ using Core.Repositories;
 using UseCases.Interfaces;
 using UseCases.Offices.Commands;
 
-namespace UseCases.Handlers.Offices
+namespace UseCases.Offices.Handlers
 {
     public class UpdateOfficeStatusHandler : ICommandHandler<UpdateOfficeStatusCommand>
     {
@@ -23,6 +23,10 @@ namespace UseCases.Handlers.Offices
             }
             office.IsActive = request.isActive;
             _repositoryManager.OfficeRepository.Update(office);
+
+            /*
+             TODO: send rabbitmq message to update doctor and receptionst statuses
+             */
         }
     }
 }
