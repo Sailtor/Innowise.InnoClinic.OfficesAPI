@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[DeleteOffice]
+CREATE PROCEDURE [dbo].[DeleteOffice]
 (
 	@Original_Id uniqueidentifier
 )

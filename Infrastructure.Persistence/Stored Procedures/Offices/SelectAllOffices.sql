@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[SelectAllOffices]
+CREATE PROCEDURE [dbo].[SelectAllOffices]
 AS
 	SET NOCOUNT ON;
 SELECT *

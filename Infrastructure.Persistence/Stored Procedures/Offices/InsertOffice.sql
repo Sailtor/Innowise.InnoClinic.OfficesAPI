@@ -1,4 +1,4 @@
-ALTER PROCEDURE [dbo].[InsertOffice]
+CREATE PROCEDURE [dbo].[InsertOffice]
 (
 	@City nvarchar(2048),
 	@Street nvarchar(2048),

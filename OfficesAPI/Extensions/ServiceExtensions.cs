@@ -46,7 +46,7 @@ namespace OfficesAPI.Extensions
             services.AddLogging(c => c.AddFluentMigratorConsole())
                 .AddFluentMigratorCore()
                 .ConfigureRunner(c => c.AddSqlServer2016()
-                    .WithGlobalConnectionString(configuration.GetConnectionString("ServicesDb"))
+                    .WithGlobalConnectionString(configuration.GetConnectionString("OfficesDb"))
                     .ScanIn(typeof(Infrastructure.Persistence.AssemblyReference).Assembly).For.Migrations());
         }
 
