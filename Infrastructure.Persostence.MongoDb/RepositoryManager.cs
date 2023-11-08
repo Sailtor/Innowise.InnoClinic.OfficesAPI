@@ -1,15 +1,15 @@
 ﻿using Core.Repositories;
-using Infrastructure.Persistence.Repositories;
+using Infrastructure.Persistence.MongoDb.Repositories;
 
-namespace Infrastructure.Persistence
+namespace Infrastructure.Persistence.MongoDb
 {
     public sealed class RepositoryManager : IRepositoryManager
     {
         private readonly Lazy<IOfficeRepository> _lazyOfficeRepository;
 
-        public RepositoryManager(DapperContext dbContext)
+        public RepositoryManager(IOfficesAPIDbSettings settings)
         {
-            _lazyOfficeRepository = new Lazy<IOfficeRepository>(() => new OfficeRepository(dbContext));
+            _lazyOfficeRepository = new Lazy<IOfficeRepository>(() => new OfficeRepository(settings));
         }
 
         public IOfficeRepository OfficeRepository => _lazyOfficeRepository.Value;

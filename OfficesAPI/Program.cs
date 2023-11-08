@@ -14,7 +14,7 @@ try
 
     builder.Services.ConfigureControllers();
     builder.Services.ConfigureSwagger();
-    builder.Services.ConfigureDapper(builder.Configuration);
+    builder.Services.ConfigureMongoDb(builder.Configuration);
     builder.Services.ConfigureEntityServices();
     builder.Services.ConfigureFluentValidation();
     builder.Services.ConfigureAutomapper();
@@ -33,7 +33,6 @@ try
 
     app.UseExceptionHandlerMiddleware();
     app.UseSerilogRequestLogging();
-    app.MigrateDatabase();
     app.UseHttpsRedirection();
     app.UseAuthorization();
     app.MapControllers().AllowAnonymous(); //NOTE: turned auth off during development

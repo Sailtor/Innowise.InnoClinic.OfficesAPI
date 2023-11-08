@@ -1,10 +1,9 @@
 ﻿using Core.Repositories;
-using FluentMigrator.Runner;
 using FluentValidation;
-using Infrastructure.Persistence;
-using Infrastructure.Persistence.Migrations;
+using Infrastructure.Persistence.MongoDb;
 using MassTransit;
 using MediatR;
+using Microsoft.Extensions.Options;
 using OfficesAPI.Middleware;
 using UseCases.PipelineBehaviors;
 
@@ -40,15 +39,13 @@ namespace OfficesAPI.Extensions
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(UseCases.AssemblyReference).Assembly));
         }
 
-        public static void ConfigureDapper(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureMongoDb(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<DapperContext>();
-            services.AddSingleton<Database>();
-            services.AddLogging(c => c.AddFluentMigratorConsole())
-                .AddFluentMigratorCore()
-                .ConfigureRunner(c => c.AddSqlServer2016()
-                    .WithGlobalConnectionString(configuration.GetConnectionString("OfficesDb"))
-                    .ScanIn(typeof(Infrastructure.Persistence.AssemblyReference).Assembly).For.Migrations());
+            services.Configure<OfficesAPIDbSettings>(
+                configuration.GetSection(nameof(OfficesAPIDbSettings)));
+
+            services.AddSingleton<IOfficesAPIDbSettings>(provider =>
+                provider.GetRequiredService<IOptions<OfficesAPIDbSettings>>().Value);
         }
 
         public static void ConfigureAutomapper(this IServiceCollection services)
