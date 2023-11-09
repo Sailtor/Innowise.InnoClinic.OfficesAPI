@@ -22,7 +22,7 @@ namespace UseCases.Infrastructure.FluentValidation.Validators.UpdateDto
 
             RuleFor(p => p.OfficeNumber).NotNull().WithMessage("Office number can't be null")
                 .InclusiveBetween(1, 2048).WithMessage("Office number must be between 1 and 2048")
-                .WithErrorCode("Invalid service price");
+                .WithErrorCode("Invalid office number");
 
             RuleFor(p => p.RegistryPhoneNumber).NotNull().WithMessage("Registry phone number can't be null")
                 .Matches(new Regex(RegexStrings.PhoneRegex)).WithMessage("Registry phone number must be a valid phone number")
