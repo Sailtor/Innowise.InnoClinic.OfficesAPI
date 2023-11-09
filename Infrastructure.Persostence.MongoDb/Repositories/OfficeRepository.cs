@@ -1,8 +1,6 @@
 ﻿using Core.Entities;
-using Core.Repositories;
-using MongoDB.Bson;
+using Core.RepositoryInterfaces;
 using MongoDB.Driver;
-using System.Data;
 
 namespace Infrastructure.Persistence.MongoDb.Repositories
 {

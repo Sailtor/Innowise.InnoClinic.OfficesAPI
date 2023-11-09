@@ -1,6 +1,6 @@
 ﻿using Core.Entities;
 
-namespace Core.Repositories
+namespace Core.RepositoryInterfaces
 {
     public interface IOfficeRepository
     {

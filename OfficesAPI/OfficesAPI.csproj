@@ -21,9 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Infrastructure.MessageBus\Infrastructure.Shared.csproj" />
-    <ProjectReference Include="..\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\Infrastructure.Persostence.MongoDb\Infrastructure.Persistence.MongoDb.csproj" />
-    <ProjectReference Include="..\Presentation\Presentation.csproj" />
     <ProjectReference Include="..\UseCases\UseCases.csproj" />
   </ItemGroup>
 

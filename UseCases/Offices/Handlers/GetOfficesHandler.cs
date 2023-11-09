@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Core.Repositories;
+using Core.RepositoryInterfaces;
 using UseCases.Infrastructure.Dtos.OfficeDto;
 using UseCases.Interfaces;
 using UseCases.Offices.Queries;

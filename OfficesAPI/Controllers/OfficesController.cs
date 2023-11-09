@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Data;
+using OfficesAPI.Data;
 using UseCases.Infrastructure.Dtos.OfficeDto;
 using UseCases.Offices.Commands;
 using UseCases.Offices.Queries;
 
-namespace Presentation.Controllers
+namespace OfficesAPI.Controllers
 {
     [ApiController]
     [Route("api/offices")]

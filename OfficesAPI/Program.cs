@@ -19,7 +19,7 @@ try
     builder.Services.ConfigureFluentValidation();
     builder.Services.ConfigureAutomapper();
     builder.Services.ConfigureCQRSServices();
-    builder.Services.CofigureAuthorization();
+    builder.Services.CofigureAuthorization(builder.Configuration);
     builder.Services.CofigureExceptionHandlerMiddleware();
     builder.Services.CofigureMassTransit();
 
@@ -35,7 +35,7 @@ try
     app.UseSerilogRequestLogging();
     app.UseHttpsRedirection();
     app.UseAuthorization();
-    app.MapControllers().AllowAnonymous(); //NOTE: turned auth off during development
+    app.MapControllers();
     app.Run();
 }
 catch (Exception ex)

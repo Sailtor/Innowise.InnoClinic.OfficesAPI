@@ -7,8 +7,12 @@ namespace UseCases.Infrastructure.FluentValidation.Validators.Commands.Offices
     {
         public UpdateOfficeStatusCommandValidator()
         {
-            RuleFor(p => p.officeId).NotNull().Must(ValidationMethods.ValidateGuid).WithErrorCode("Invalid office ID");
-            RuleFor(p => p.isActive).NotNull().WithErrorCode("Invalid office status");
+            RuleFor(p => p.officeId).NotNull().WithMessage("Office id can't be null")
+                .Must(ValidationMethods.ValidateGuid).WithMessage("Office id must be a valid guid")
+                .WithErrorCode("Invalid office ID");
+
+            RuleFor(p => p.isActive).NotNull().WithMessage("Office status can't be null")
+                .WithErrorCode("Invalid office status");
         }
     }
 }

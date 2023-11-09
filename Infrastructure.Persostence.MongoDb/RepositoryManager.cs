@@ -1,4 +1,4 @@
-﻿using Core.Repositories;
+﻿using Core.RepositoryInterfaces;
 using Infrastructure.Persistence.MongoDb.Repositories;
 
 namespace Infrastructure.Persistence.MongoDb

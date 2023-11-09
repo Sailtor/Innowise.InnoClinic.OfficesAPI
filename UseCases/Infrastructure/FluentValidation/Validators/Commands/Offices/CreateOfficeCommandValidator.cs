@@ -8,7 +8,9 @@ namespace UseCases.Infrastructure.FluentValidation.Validators.Commands.Offices
     {
         public CreateOfficeCommandValidator()
         {
-            RuleFor(p => p.officeForCreation).NotNull().SetValidator(new OfficeCreationDtoValidator()).WithErrorCode("Invalid office");
+            RuleFor(p => p.officeForCreation).NotNull().WithMessage("Office can't be null")
+                .SetValidator(new OfficeCreationDtoValidator())
+                .WithErrorCode("Invalid office");
         }
     }
 }

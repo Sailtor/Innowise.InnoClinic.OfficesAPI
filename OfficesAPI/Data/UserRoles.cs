@@ -1,4 +1,4 @@
-﻿namespace Presentation.Data
+﻿namespace OfficesAPI.Data
 {
     public static class UserRoles
     {

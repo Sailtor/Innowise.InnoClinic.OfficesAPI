@@ -1,5 +1,5 @@
 ﻿using Core.Exceptions;
-using Core.Repositories;
+using Core.RepositoryInterfaces;
 using Infrastructure.Shared;
 using MassTransit;
 using UseCases.Interfaces;

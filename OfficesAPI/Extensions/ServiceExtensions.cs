@@ -1,4 +1,4 @@
-﻿using Core.Repositories;
+﻿using Core.RepositoryInterfaces;
 using FluentValidation;
 using Infrastructure.Persistence.MongoDb;
 using MassTransit;
@@ -13,8 +13,7 @@ namespace OfficesAPI.Extensions
     {
         public static void ConfigureControllers(this IServiceCollection services)
         {
-            services.AddControllers()
-                .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+            services.AddControllers();
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)
@@ -53,13 +52,13 @@ namespace OfficesAPI.Extensions
             services.AddAutoMapper(typeof(UseCases.AssemblyReference).Assembly);
         }
 
-        public static void CofigureAuthorization(this IServiceCollection services)
+        public static void CofigureAuthorization(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication("Bearer")
                .AddJwtBearer("Bearer", opt =>
                {
                    opt.RequireHttpsMetadata = false;
-                   opt.Authority = "https://localhost:5005";
+                   opt.Authority = configuration.GetSection("AuthenticationAutority").Value;
                    opt.Audience = "offices";
                });
         }
