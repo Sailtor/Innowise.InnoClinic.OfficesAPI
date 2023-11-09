@@ -58,7 +58,7 @@ namespace OfficesAPI.Extensions
                .AddJwtBearer("Bearer", opt =>
                {
                    opt.RequireHttpsMetadata = false;
-                   opt.Authority = configuration.GetSection("AuthenticationAutority").Value;
+                   opt.Authority = configuration["AuthenticationAuthority"];
                    opt.Audience = "offices";
                });
         }
