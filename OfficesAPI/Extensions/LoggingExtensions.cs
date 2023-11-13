@@ -6,7 +6,7 @@ namespace OfficesAPI.Extensions
 {
     public static class LoggingExtensions
     {
-        public static void CongigureLogger()
+        public static void ConfigureLogger()
         {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()

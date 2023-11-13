@@ -1,7 +1,7 @@
 using OfficesAPI.Extensions;
 using Serilog;
 
-LoggingExtensions.CongigureLogger();
+LoggingExtensions.ConfigureLogger();
 
 try
 {
