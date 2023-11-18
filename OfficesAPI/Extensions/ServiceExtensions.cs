@@ -1,6 +1,7 @@
 ﻿using Core.RepositoryInterfaces;
 using FluentValidation;
 using Infrastructure.Persistence.MongoDb;
+using Infrastructure.Persistence.MongoDb.Configurations;
 using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Options;
@@ -76,11 +77,12 @@ namespace OfficesAPI.Extensions
             });
         }
 
-        /* --- CUSTOM MIDDLEWARE --- */
+        #region Custom Middleware
         public static void UseExceptionHandlerMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<ExceptionHandlingMiddleware>();
         }
+        #endregion
 
     }
 }

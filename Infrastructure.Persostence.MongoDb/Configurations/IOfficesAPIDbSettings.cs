@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Persistence.MongoDb
+﻿namespace Infrastructure.Persistence.MongoDb.Configurations
 {
     public interface IOfficesAPIDbSettings
     {

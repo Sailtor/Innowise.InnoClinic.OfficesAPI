@@ -3,5 +3,5 @@ using UseCases.Interfaces;
 
 namespace UseCases.Offices.Commands
 {
-    public record CreateOfficeCommand(OfficeForCreationDto officeForCreation) : ICommand<OfficeForResponseDto>;
+    public record CreateOfficeCommand(OfficeForCreationDto OfficeForCreation) : ICommand<OfficeForResponseDto>;
 }

@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.RepositoryInterfaces;
+using Infrastructure.Persistence.MongoDb.Configurations;
 using MongoDB.Driver;
 
 namespace Infrastructure.Persistence.MongoDb.Repositories
@@ -24,7 +25,7 @@ namespace Infrastructure.Persistence.MongoDb.Repositories
             return await _offices.Find(o => o.Id == officeId).FirstOrDefaultAsync(cancellationToken: cancellationToken);
         }
 
-        public async Task<Office> AddAsync(Office office, CancellationToken cancellationToken)
+        public async Task<Office> AddAsync(Office office, CancellationToken cancellationToken = default)
         {
             await _offices.InsertOneAsync(office, cancellationToken: cancellationToken);
             return office;

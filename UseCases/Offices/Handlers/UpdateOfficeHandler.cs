@@ -19,12 +19,12 @@ namespace UseCases.Offices.Handlers
 
         public async Task Handle(UpdateOfficeCommand request, CancellationToken cancellationToken)
         {
-            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.officeId, cancellationToken);
+            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.OfficeId, cancellationToken);
             if (office is null)
             {
-                throw new OfficeNotFoundException(request.officeId);
+                throw new OfficeNotFoundException(request.OfficeId);
             }
-            _mapper.Map(request.officeForUpdate, office);
+            _mapper.Map(request.OfficeForUpdate, office);
             _repositoryManager.OfficeRepository.Update(office);
         }
     }

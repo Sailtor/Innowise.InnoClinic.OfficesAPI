@@ -19,18 +19,18 @@ namespace UseCases.Offices.Handlers
 
         public async Task Handle(UpdateOfficeStatusCommand request, CancellationToken cancellationToken)
         {
-            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.officeId, cancellationToken);
+            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.OfficeId, cancellationToken);
             if (office is null)
             {
-                throw new OfficeNotFoundException(request.officeId);
+                throw new OfficeNotFoundException(request.OfficeId);
             }
-            office.IsActive = request.isActive;
+            office.IsActive = request.IsActive;
             _repositoryManager.OfficeRepository.Update(office);
 
             await _publishEndpoint.Publish<OfficeStatusChanged>(new
             {
                 Id = office.Id,
-                IsActive = request.isActive
+                IsActive = request.IsActive
             }, cancellationToken);
         }
     }

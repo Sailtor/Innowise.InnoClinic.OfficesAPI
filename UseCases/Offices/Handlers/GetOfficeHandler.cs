@@ -20,10 +20,10 @@ namespace UseCases.Offices.Handlers
 
         public async Task<OfficeForResponseDto> Handle(GetOfficeQuery request, CancellationToken cancellationToken)
         {
-            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.officeId, cancellationToken);
+            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.OfficeId, cancellationToken);
             if (office is null)
             {
-                throw new OfficeNotFoundException(request.officeId);
+                throw new OfficeNotFoundException(request.OfficeId);
             }
             return _mapper.Map<OfficeForResponseDto>(office);
         }

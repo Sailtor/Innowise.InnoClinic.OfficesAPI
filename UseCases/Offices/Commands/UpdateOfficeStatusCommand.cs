@@ -2,5 +2,5 @@
 
 namespace UseCases.Offices.Commands
 {
-    public record UpdateOfficeStatusCommand(Guid officeId, bool isActive) : ICommand;
+    public record UpdateOfficeStatusCommand(Guid OfficeId, bool IsActive) : ICommand;
 }

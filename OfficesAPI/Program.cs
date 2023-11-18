@@ -35,7 +35,7 @@ try
     app.UseSerilogRequestLogging();
     app.UseHttpsRedirection();
     app.UseAuthorization();
-    app.MapControllers();
+    app.MapControllers().AllowAnonymous();
     app.Run();
 }
 catch (Exception ex)

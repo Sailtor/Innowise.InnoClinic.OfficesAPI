@@ -3,5 +3,5 @@ using UseCases.Interfaces;
 
 namespace UseCases.Offices.Queries
 {
-    public record GetOfficeQuery(Guid officeId) : IQuery<OfficeForResponseDto>;
+    public record GetOfficeQuery(Guid OfficeId) : IQuery<OfficeForResponseDto>;
 }

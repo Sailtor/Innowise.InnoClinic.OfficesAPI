@@ -16,10 +16,10 @@ namespace UseCases.Offices.Handlers
 
         public async Task Handle(DeleteOfficeCommand request, CancellationToken cancellationToken)
         {
-            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.officeId, cancellationToken);
+            var office = await _repositoryManager.OfficeRepository.GetByIdAsync(request.OfficeId, cancellationToken);
             if (office is null)
             {
-                throw new OfficeNotFoundException(request.officeId);
+                throw new OfficeNotFoundException(request.OfficeId);
             }
             _repositoryManager.OfficeRepository.Remove(office);
         }

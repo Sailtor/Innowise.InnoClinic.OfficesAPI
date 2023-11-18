@@ -20,7 +20,7 @@ namespace UseCases.Offices.Handlers
 
         public async Task<OfficeForResponseDto> Handle(CreateOfficeCommand request, CancellationToken cancellationToken)
         {
-            var office = _mapper.Map<Office>(request.officeForCreation);
+            var office = _mapper.Map<Office>(request.OfficeForCreation);
             office = await _repositoryManager.OfficeRepository.AddAsync(office, cancellationToken);
             return _mapper.Map<OfficeForResponseDto>(office);
         }
