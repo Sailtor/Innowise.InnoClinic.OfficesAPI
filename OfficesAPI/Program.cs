@@ -22,6 +22,7 @@ try
     builder.Services.CofigureAuthorization(builder.Configuration);
     builder.Services.CofigureExceptionHandlerMiddleware();
     builder.Services.CofigureMassTransit();
+    builder.Services.ConfigureCORS(builder.Configuration);
 
     var app = builder.Build();
 
@@ -33,6 +34,7 @@ try
 
     app.UseExceptionHandlerMiddleware();
     app.UseSerilogRequestLogging();
+    app.UseCors("CorsPolicy");
     app.UseHttpsRedirection();
     app.UseAuthorization();
     app.MapControllers().AllowAnonymous();
